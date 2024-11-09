@@ -3,10 +3,14 @@ package com.employee.coursework.controller;
 import com.employee.coursework.Employee;
 import com.employee.coursework.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -19,13 +23,13 @@ public class EmployeeController {
 
     public Employee addEmployee(
 
-            @RequestParam("name") String name,
+            @RequestParam("firstName") String firstName,
 
             @RequestParam("lastName") String lastName
 
     ) {
 
-        return employeeService.add(name, lastName);
+        return employeeService.add(firstName, lastName);
 
     }
 
@@ -33,13 +37,13 @@ public class EmployeeController {
 
     public Employee removeEmployee(
 
-            @RequestParam("name") String name,
+            @RequestParam("firstName") String firstName,
 
             @RequestParam("lastName") String lastName
 
     ) {
 
-        return employeeService.remove(name, lastName);
+        return employeeService.remove(firstName, lastName);
 
     }
 
@@ -47,17 +51,17 @@ public class EmployeeController {
 
     public Employee findEmployee(
 
-            @RequestParam("name") String name,
+            @RequestParam("firstName") String firstName,
 
             @RequestParam("lastName") String lastName
 
     ) {
 
-        return employeeService.find(name, lastName);
+        return employeeService.find(firstName, lastName);
 
     }
 
-    @GetMapping("/allEmployees")
+    @GetMapping("/allEmployee")
 
     public List<Employee> getAllEmployees() {
 
